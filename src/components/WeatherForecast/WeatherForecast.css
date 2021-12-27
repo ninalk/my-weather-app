@@ -1,0 +1,24 @@
+.weather {
+    color: white;
+}
+
+.location {
+    margin-top: 40px;
+    margin-bottom: 0px;
+    font-size: 1.4em;
+}
+
+.current-temp {
+    font-size: 4em;
+    padding: 10px;
+    margin: 0px;
+}
+
+.description {
+    margin: auto;
+}
+
+.temps {
+    display: flex;
+    justify-content: space-evenly;
+}
