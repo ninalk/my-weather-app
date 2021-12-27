@@ -1,6 +1,8 @@
+require('dotenv').config()
 import React, { useRef, useState } from 'react';
 import './App.css';
 import WeatherForecast from './components/WeatherForecast/WeatherForecast';
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -22,13 +24,13 @@ function App() {
 
   // use useRef to access DOM nodes or react elements
   const inputRef = useRef();
-  const apiKey = 'caba6cf4fd21b43e2d81bdebadc75c85';
+  const API_KEY = process.env.API_KEY;
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     let inputValue = inputRef.current.value;
-    let locationSearchUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&appid=${apiKey}`;
+    let locationSearchUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&appid=${API_KEY}`;
     
     // make api call to weatherAPI
     const makeApiCall = () => {
