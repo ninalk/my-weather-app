@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
-import WeatherForecast from './components/WeatherForecast/WeatherForecast';
+import ForecastContainer from './components/ForecastContainer/ForecastContainer';
+import ForecastTitle from './components/ForecastTitle/ForecastTitle';
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -16,12 +17,15 @@ function App() {
       weather: [{
           description: '',
           icon: ''
-        }]
+        }],
+      dt_txt: ''
     }]
   });
 
   // use useRef to access DOM nodes or react elements
   const inputRef = useRef();
+
+  // api key
   const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 
   const handleFormSubmit = (e) => {
@@ -47,7 +51,6 @@ function App() {
     makeApiCall();
   }
 
-
   return (
     <div className="App">
       <header className="App-header">
@@ -57,16 +60,12 @@ function App() {
             <input type="submit" value="submit" onClick={handleFormSubmit}/>
           </form>
           {weatherData.city.name ?
-            <WeatherForecast
-              location={weatherData.city.name} 
-              temp={weatherData.list[0].main.temp}
-              minTemp={weatherData.list[0].main.temp_min}
-              maxTemp={weatherData.list[0].main.temp_max}
-              description={weatherData.list[0].weather[0].description}
-              iconCode={weatherData.list[0].weather[0].icon}
-            />
+            <>
+              <ForecastTitle location={weatherData.city.name} />
+              <ForecastContainer weatherData={weatherData} />
+            </>
             :
-            <h4>No weather data available</h4>
+            <h3>No Weather Data Available</h3>
           }
       </header>
     </div>

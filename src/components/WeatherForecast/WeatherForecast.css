@@ -1,24 +1,39 @@
 .weather {
     color: white;
-}
-
-.location {
-    margin-top: 40px;
-    margin-bottom: 0px;
-    font-size: 1.4em;
+    padding: 10px 25px;
+    width: 160px;
 }
 
 .current-temp {
-    font-size: 4em;
+    font-size: 40px;
     padding: 10px;
     margin: 0px;
 }
 
 .description {
     margin: auto;
+    font-size: 20px;
 }
 
 .temps {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.day {
+    margin: 0;
+    font-size: 20px;
+}
+
+.high {
+    color:white;
+}
+
+.low {
+    color:black;
+}
+
+.today {
+    background-color: grey;
 }
