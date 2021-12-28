@@ -24,6 +24,7 @@ function App() {
 
   // use useRef to access DOM nodes or react elements
   const inputRef = useRef();
+  const formRef = useRef();
 
   // api key
   const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
@@ -49,13 +50,14 @@ function App() {
         .catch(err => console.log(err))
     };
     makeApiCall();
+    formRef.current.reset();
   }
 
   return (
     <div className="App">
       <header className="App-header">
           <h1>My Weather App</h1>
-          <form>
+          <form ref={formRef}>
             <input type="text" placeholder="location" ref={inputRef} />
             <input type="submit" value="submit" onClick={handleFormSubmit}/>
           </form>
